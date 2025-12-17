@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Budget Calculator - SakhiPay</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+</head>
+<body class="bg-yellow-50 text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="bg-yellow-400 text-black px-6 py-4 flex justify-between items-center font-semibold">
+    <h1 class="text-lg font-bold">💰 SakhiPay Budget Calculator</h1>
+    <a href="index.html" class="hover:underline">🏠 Back to Home</a>
+  </nav>
+
+  <!-- Main Section -->
+  <section class="max-w-3xl mx-auto py-10 px-4">
+    <h2 class="text-3xl font-bold mb-6 text-center text-yellow-700">Plan Your Monthly Budget</h2>
+
+    <!-- Income Section -->
+    <div class="bg-white p-6 rounded shadow mb-6">
+      <h3 class="text-xl font-semibold mb-4">👛 Monthly Income</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <input type="number" id="salary" placeholder="💼 Salary" class="p-2 border rounded w-full">
+        <input type="number" id="sideIncome" placeholder="💼 Side Income" class="p-2 border rounded w-full">
+        <input type="number" id="otherIncome" placeholder="💼 Other" class="p-2 border rounded w-full">
+      </div>
+    </div>
+
+    <!-- Expenses Section -->
+    <div class="bg-white p-6 rounded shadow mb-6">
+      <h3 class="text-xl font-semibold mb-4">📊 Monthly Expenses</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input type="number" id="rent" placeholder="🏠 Rent / Housing" class="p-2 border rounded w-full">
+        <input type="number" id="food" placeholder="🍲 Food & Groceries" class="p-2 border rounded w-full">
+        <input type="number" id="transport" placeholder="🚍 Transport" class="p-2 border rounded w-full">
+        <input type="number" id="internet" placeholder="📱 Mobile & Internet" class="p-2 border rounded w-full">
+        <input type="number" id="education" placeholder="🧒 Children’s Education" class="p-2 border rounded w-full">
+        <input type="number" id="health" placeholder="💊 Healthcare / Medicine" class="p-2 border rounded w-full">
+        <input type="number" id="selfcare" placeholder="💄 Self-care / Misc." class="p-2 border rounded w-full">
+        <input type="number" id="emi" placeholder="💳 EMIs / Loans" class="p-2 border rounded w-full">
+        <input type="number" id="entertainment" placeholder="🎉 Entertainment" class="p-2 border rounded w-full">
+      </div>
+    </div>
+
+    <!-- Savings Goal -->
+    <div class="bg-white p-6 rounded shadow mb-6">
+      <h3 class="text-xl font-semibold mb-2">🎯 Monthly Savings Goal</h3>
+      <input type="number" id="savingsGoal" placeholder="Enter your savings goal (₹)" class="p-2 border rounded w-full">
+    </div>
+
+    <!-- Button -->
+    <div class="text-center mb-6">
+      <button onclick="calculateBudget()" class="bg-yellow-500 hover:bg-yellow-400 text-black px-6 py-2 rounded font-bold">Calculate</button>
+    </div>
+
+    <!-- Output Section -->
+    <div id="resultSection" class="bg-white p-6 rounded shadow hidden">
+      <h3 class="text-xl font-semibold mb-4">📋 Your Budget Summary</h3>
+      <p id="totalIncome"></p>
+      <p id="totalExpenses"></p>
+      <p id="remainingBalance" class="font-semibold"></p>
+      <p id="savingsMessage" class="mt-2 text-lg font-semibold"></p>
+      <p id="tips" class="mt-4 text-sm text-gray-700 italic"></p>
+    </div>
+  </section>
+
+  <!-- Script -->
+  <script>
+    function calculateBudget() {
+      const income = (+document.getElementById('salary').value || 0) +
+                     (+document.getElementById('sideIncome').value || 0) +
+                     (+document.getElementById('otherIncome').value || 0);
+
+      const expenses = [
+        'rent', 'food', 'transport', 'internet',
+        'education', 'health', 'selfcare', 'emi', 'entertainment'
+      ].reduce((sum, id) => sum + (+document.getElementById(id).value || 0), 0);
+
+      const savingsGoal = +document.getElementById('savingsGoal').value || 0;
+      const balance = income - expenses;
+      const resultSection = document.getElementById('resultSection');
+      const msg = document.getElementById('savingsMessage');
+
+      document.getElementById('totalIncome').textContent = `🪙 Total Income: ₹${income}`;
+      document.getElementById('totalExpenses').textContent = `💸 Total Expenses: ₹${expenses}`;
+      document.getElementById('remainingBalance').textContent = `🧾 Remaining Balance: ₹${balance}`;
+
+      if (balance >= savingsGoal) {
+        msg.textContent = `🎉 Great job! You are saving ₹${balance - savingsGoal} this month.`;
+        msg.classList.remove('text-red-600');
+        msg.classList.add('text-green-600');
+      } else {
+        msg.textContent = `⚠️ Oops! You are overspending by ₹${Math.abs(balance - savingsGoal)}.`;
+        msg.classList.remove('text-green-600');
+        msg.classList.add('text-red-600');
+      }
+
+      // Tips example
+      const food = +document.getElementById('food').value || 0;
+      const foodPercent = income > 0 ? (food / income) * 100 : 0;
+      const tips = document.getElementById('tips');
+      tips.textContent = foodPercent > 30
+        ? `Tip: You’re spending ${foodPercent.toFixed(1)}% on food. Try to keep it under 30%.`
+        : `Great! Your food expenses are under control.`;
+
+      resultSection.classList.remove('hidden');
+    }
+  </script>
+
+  <!-- Footer -->
+  <footer class="bg-yellow-400 text-black text-center py-4 mt-8">
+    Empowering Smart Money Habits | SakhiPay © 2025
+  </footer>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Budget Calculator - SakhiPay</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+</head>
+<body class="bg-yellow-50 text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="bg-yellow-400 text-black px-6 py-4 flex justify-between items-center font-semibold">
+    <h1 class="text-lg font-bold">💰 SakhiPay Budget Calculator</h1>
+    <a href="index.html" class="hover:underline">🏠 Back to Home</a>
+  </nav>
+
+  <!-- Main Section -->
+  <section class="max-w-3xl mx-auto py-10 px-4">
+    <h2 class="text-3xl font-bold mb-6 text-center text-yellow-700">Plan Your Monthly Budget</h2>
+
+    <!-- Income Section -->
+    <div class="bg-white p-6 rounded shadow mb-6">
+      <h3 class="text-xl font-semibold mb-4">👛 Monthly Income</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <input type="number" id="salary" placeholder="💼 Salary" class="p-2 border rounded w-full">
+        <input type="number" id="sideIncome" placeholder="💼 Side Income" class="p-2 border rounded w-full">
+        <input type="number" id="otherIncome" placeholder="💼 Other" class="p-2 border rounded w-full">
+      </div>
+    </div>
+
+    <!-- Expenses Section -->
+    <div class="bg-white p-6 rounded shadow mb-6">
+      <h3 class="text-xl font-semibold mb-4">📊 Monthly Expenses</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input type="number" id="rent" placeholder="🏠 Rent / Housing" class="p-2 border rounded w-full">
+        <input type="number" id="food" placeholder="🍲 Food & Groceries" class="p-2 border rounded w-full">
+        <input type="number" id="transport" placeholder="🚍 Transport" class="p-2 border rounded w-full">
+        <input type="number" id="internet" placeholder="📱 Mobile & Internet" class="p-2 border rounded w-full">
+        <input type="number" id="education" placeholder="🧒 Children’s Education" class="p-2 border rounded w-full">
+        <input type="number" id="health" placeholder="💊 Healthcare / Medicine" class="p-2 border rounded w-full">
+        <input type="number" id="selfcare" placeholder="💄 Self-care / Misc." class="p-2 border rounded w-full">
+        <input type="number" id="emi" placeholder="💳 EMIs / Loans" class="p-2 border rounded w-full">
+        <input type="number" id="entertainment" placeholder="🎉 Entertainment" class="p-2 border rounded w-full">
+      </div>
+    </div>
+
+    <!-- Savings Goal -->
+    <div class="bg-white p-6 rounded shadow mb-6">
+      <h3 class="text-xl font-semibold mb-2">🎯 Monthly Savings Goal</h3>
+      <input type="number" id="savingsGoal" placeholder="Enter your savings goal (₹)" class="p-2 border rounded w-full">
+    </div>
+
+    <!-- Button -->
+    <div class="text-center mb-6">
+      <button onclick="calculateBudget()" class="bg-yellow-500 hover:bg-yellow-400 text-black px-6 py-2 rounded font-bold">Calculate</button>
+    </div>
+
+    <!-- Output Section -->
+    <div id="resultSection" class="bg-white p-6 rounded shadow hidden">
+      <h3 class="text-xl font-semibold mb-4">📋 Your Budget Summary</h3>
+      <p id="totalIncome"></p>
+      <p id="totalExpenses"></p>
+      <p id="remainingBalance" class="font-semibold"></p>
+      <p id="savingsMessage" class="mt-2 text-lg font-semibold"></p>
+      <p id="tips" class="mt-4 text-sm text-gray-700 italic"></p>
+    </div>
+  </section>
+
+  <!-- Script -->
+  <script>
+    function calculateBudget() {
+      const income = (+document.getElementById('salary').value || 0) +
+                     (+document.getElementById('sideIncome').value || 0) +
+                     (+document.getElementById('otherIncome').value || 0);
+
+      const expenses = [
+        'rent', 'food', 'transport', 'internet',
+        'education', 'health', 'selfcare', 'emi', 'entertainment'
+      ].reduce((sum, id) => sum + (+document.getElementById(id).value || 0), 0);
+
+      const savingsGoal = +document.getElementById('savingsGoal').value || 0;
+      const balance = income - expenses;
+      const resultSection = document.getElementById('resultSection');
+      const msg = document.getElementById('savingsMessage');
+
+      document.getElementById('totalIncome').textContent = `🪙 Total Income: ₹${income}`;
+      document.getElementById('totalExpenses').textContent = `💸 Total Expenses: ₹${expenses}`;
+      document.getElementById('remainingBalance').textContent = `🧾 Remaining Balance: ₹${balance}`;
+
+      if (balance >= savingsGoal) {
+        msg.textContent = `🎉 Great job! You are saving ₹${balance - savingsGoal} this month.`;
+        msg.classList.remove('text-red-600');
+        msg.classList.add('text-green-600');
+      } else {
+        msg.textContent = `⚠️ Oops! You are overspending by ₹${Math.abs(balance - savingsGoal)}.`;
+        msg.classList.remove('text-green-600');
+        msg.classList.add('text-red-600');
+      }
+
+      // Tips example
+      const food = +document.getElementById('food').value || 0;
+      const foodPercent = income > 0 ? (food / income) * 100 : 0;
+      const tips = document.getElementById('tips');
+      tips.textContent = foodPercent > 30
+        ? `Tip: You’re spending ${foodPercent.toFixed(1)}% on food. Try to keep it under 30%.`
+        : `Great! Your food expenses are under control.`;
+
+      resultSection.classList.remove('hidden');
+    }
+  </script>
+
+  <!-- Footer -->
+  <footer class="bg-yellow-400 text-black text-center py-4 mt-8">
+    Empowering Smart Money Habits | SakhiPay © 2025
+  </footer>
+</body>
+</html>
+

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Talk to Sakhi - Chatbot</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+</head>
+<body class="bg-purple-50 text-gray-800">
+  <!-- Navbar -->
+  <nav class="bg-purple-800 text-white px-6 py-4 flex justify-between items-center">
+    <h1 class="text-lg font-bold">💬 Talk to Sakhi</h1>
+    <a href="index.html" class="hover:underline">🏠 Back to Home</a>
+  </nav>
+
+  <!-- Chat Section -->
+  <section class="max-w-3xl mx-auto py-12 px-6">
+    <h2 class="text-2xl font-bold text-purple-800 mb-6 text-center">Ask Sakhi Your Questions</h2>
+
+    <!-- Language Selection -->
+    <div class="mb-4 text-center">
+      <label for="lang" class="mr-2 font-semibold">🌐 Choose Language:</label>
+      <select id="lang" class="border rounded px-2 py-1">
+        <option value="en-IN">English</option>
+        <option value="hi-IN">हिन्दी</option>
+        <option value="te-IN">తెలుగు</option>
+      </select>
+    </div>
+
+    <!-- Chat Window -->
+    <div id="chat" class="bg-white p-4 rounded shadow h-64 overflow-y-auto mb-4"></div>
+
+    <!-- Input & Buttons -->
+    <div class="flex gap-2">
+      <input id="userInput" type="text" placeholder="Ask your question..." class="flex-grow px-4 py-2 rounded border" />
+      <button onclick="askSakhi()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-500">Ask</button>
+      <button onclick="startListening()" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-400">🎤 Speak</button>
+      <button onclick="stopSpeaking()" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-500">Stop</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-purple-800 text-white text-center py-6 mt-8">
+    Helping You Stay Informed | SakhiPay © 2025
+  </footer>
+
+  <!-- Scripts -->
+  <script src="apiKey.js"></script>
+  <script src="sakhi.js"></script>
+  <script>
+    let synth = window.speechSynthesis;
+    let recognition;
+    let currentUtterance = null;
+
+    async function askSakhi() {
+      const userInput = document.getElementById("userInput").value.trim();
+      const chatBox = document.getElementById("chat");
+      const lang = document.getElementById("lang").value;
+
+      if (!userInput) return;
+
+      chatBox.innerHTML += `<div class="text-right mb-2"><strong>You:</strong> ${userInput}</div>`;
+
+      const aiReply = await fetchSakhiAIAnswer(userInput, lang);
+
+      chatBox.innerHTML += `<div class="text-left mb-4 text-purple-700"><strong>Sakhi:</strong> ${aiReply}</div>`;
+      chatBox.scrollTop = chatBox.scrollHeight;
+      document.getElementById("userInput").value = "";
+
+      if (synth.speaking) synth.cancel();
+      currentUtterance = new SpeechSynthesisUtterance(aiReply);
+      currentUtterance.lang = lang;
+      synth.speak(currentUtterance);
+    }
+
+    function stopSpeaking() {
+      if (synth.speaking) synth.cancel();
+    }
+
+    function startListening() {
+      const lang = document.getElementById("lang").value;
+      recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+      recognition.lang = lang;
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+
+      recognition.start();
+
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        document.getElementById("userInput").value = transcript;
+        askSakhi();
+      };
+
+      recognition.onerror = (event) => {
+        alert("Voice input error: " + event.error);
+      };
+    }
+  </script>
+</body>
+</html>

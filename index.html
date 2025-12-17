@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SakhiPay</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-purple-100 text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="bg-purple-800 text-white px-6 py-4 flex justify-between items-center">
+        <h1 class="text-lg font-bold">💳 SakhiPay</h1>
+        <div class="space-x-4">
+            <a href="index.html" class="hover:underline">Home</a>
+            <a href="features.html" class="hover:underline">Features</a>
+            <a href="about.html" class="hover:underline">About</a>
+        </div>
+    </nav>
+
+    <!-- Language Selector -->
+    <div class="bg-yellow-100 text-center py-2">
+        <label for="language" class="mr-2 font-semibold">🌐 Choose Language:</label>
+        <select id="language" class="px-2 py-1 rounded">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="ta">தமிழ்</option>
+    </select>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="bg-purple-600 text-white py-16 px-8">
+        <div class="flex flex-col md:flex-row items-center justify-center max-w-6xl mx-auto">
+            <img src="https://cdn-icons-png.flaticon.com/512/2922/2922561.png" alt="Woman illustration" class="w-40 h-40 md:w-52 md:h-52 mb-6 md:mb-0 md:mr-10" />
+            <div class="text-center md:text-left">
+                <h2 id="hero-title" class="text-4xl font-bold mb-4">SakhiPay</h2>
+                <p id="hero-desc" class="text-lg max-w-xl mb-6">
+                    SakhiPay is an AI-powered, voice-enabled web application designed to help women learn and safely use digital payments — especially UPI — in their own language and at their own pace.
+                </p>
+                <button id="start-btn" class="bg-yellow-400 hover:bg-yellow-300 text-black px-6 py-2 rounded font-semibold">Start Exploring</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features -->
+    <section class="py-12 px-6">
+        <h3 id="interactive-title" class="text-2xl font-bold text-center mb-8">Learning Made Interactive</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+            <a href="chat.html" class="block bg-white p-6 rounded shadow hover:bg-purple-100 transition cursor-pointer">
+                <p class="text-3xl mb-4">💬</p>
+                <h4 id="chat-title" class="text-xl font-bold mb-2">Talk to Sakhi</h4>
+                <p id="chat-desc">Interactive chatbot with voice that answers questions on banking, UPI, schemes, and safety.</p>
+            </a>
+            <a href="budget.html" class="block bg-white p-6 rounded shadow hover:bg-purple-100 transition cursor-pointer">
+                <p class="text-3xl mb-4">🧮</p>
+                <h4 id="budget-title" class="text-xl font-bold mb-2">Budget Calculator</h4>
+                <p id="budget-desc">Simple tools for monthly budget, EMI, interest calculator, etc.</p>
+            </a>
+            <a href="safety.html" class="block bg-white p-6 rounded shadow hover:bg-purple-100 transition cursor-pointer">
+                <p class="text-3xl mb-4">🛡️</p>
+                <h4 id="safety-title" class="text-xl font-bold mb-2">Help & Safety</h4>
+                <p id="safety-desc">Emergency helplines, nearby help centers, safety tips for secure digital usage.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="bg-purple-50 py-12 px-6">
+        <h3 id="tools-title" class="text-2xl font-bold text-center mb-6">SakhiPay Tools & Guidance</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <a href="schemes.html" class="block bg-white p-6 rounded shadow hover:bg-purple-100 transition cursor-pointer">
+                <h4 id="schemes-title" class="font-bold mb-2">📜 Women Schemes</h4>
+                <p id="schemes-desc">Show PMJDY, Sukanya Samriddhi, etc. with eligibility & how-to-apply.</p>
+            </a>
+            <a href="basics.html" class="block bg-white p-6 rounded shadow hover:bg-purple-100 transition cursor-pointer">
+                <h4 id="basics-title" class="font-bold mb-2">📘 Learn Basics</h4>
+                <p id="basics-desc">Step-by-step guides: how to use UPI, create a bank account, save money, etc.</p>
+            </a>
+            <a href="quiz.html" class="block bg-white p-6 rounded shadow hover:bg-purple-100 transition cursor-pointer">
+                <h4 id="quiz-title" class="font-bold mb-2">🎯 Daily Tip / 📝 Quiz</h4>
+                <p id="quiz-desc">Improve awareness with daily tips or small quizzes.</p>
+            </a>
+            <a href="videos.html" class="block bg-white p-6 rounded shadow hover:bg-purple-100 transition cursor-pointer">
+                <h4 id="videos-title" class="font-bold mb-2">🎥 Watch & Learn</h4>
+                <p id="videos-desc">Short explainers in video/audio (in native languages) for non-literate users.</p>
+            </a>
+            <a href="locator.html" class="block bg-white p-6 rounded shadow hover:bg-purple-100 transition cursor-pointer">
+                <h4 id="locator-title" class="font-bold mb-2">📍 Find Nearby Bank</h4>
+                <p id="locator-desc">Use location to find banks or ATMs near the user.</p>
+            </a>
+            <a href="documents.html" class="block bg-white p-6 rounded shadow hover:bg-purple-100 transition cursor-pointer">
+                <h4 id="docs-title" class="font-bold mb-2">📂 Docs Needed</h4>
+                <p id="docs-desc">Checklist for loans, account opening, etc. — helps reduce confusion.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- About the Creators -->
+    <section class="bg-white py-12 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h3 class="text-3xl font-bold text-center text-purple-800 mb-10">👩‍💻 Meet the Creators</h3>
+
+            <!-- Creator 1 -->
+            <div class="flex flex-col md:flex-row items-center gap-6 mb-12">
+                <img src="https://i.postimg.cc/7h9hPgcH/shambhavi.jpg" alt="Shambhavi Mishra" class="w-40 h-40 rounded-full object-cover shadow-lg" />
+                <div>
+                    <h4 class="text-2xl font-semibold text-purple-700 mb-2">Shambhavi Mishra</h4>
+                    <p class="text-gray-700 text-lg mb-3">
+                        Hi! I'm Shambhavi, a 2nd year student at <strong>S.R.M Institute of Science and Technology</strong>. I’m passionate about using web technologies to solve real-world problems.
+                    </p>
+                    <p class="text-gray-700 text-lg">
+                        Through SakhiPay, I wanted to build a tool that helps women feel confident while using digital financial services — especially those who prefer learning in their native languages.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Creator 2 -->
+            <div class="flex flex-col md:flex-row items-center gap-6">
+                <img src="https://i.postimg.cc/Jz2yB5ht/aayati.jpg" alt="Aayati Srivastava" class="w-40 h-40 rounded-full object-cover shadow-lg" />
+                <div>
+                    <h4 class="text-2xl font-semibold text-purple-700 mb-2">Aayati Srivastava</h4>
+                    <p class="text-gray-700 text-lg mb-3">
+                        I’m Aayati, also a 2nd year student at <strong>S.R.M Institute of Science and Technology</strong>. I love building inclusive and impactful web applications.
+                    </p>
+                    <p class="text-gray-700 text-lg">
+                        SakhiPay is our shared mission to empower women through tech — making banking, budgeting, and safety more accessible for everyone, no matter their background or language.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer-text" class="bg-purple-800 text-white text-center py-6 mt-8">
+        Made with ❤️ for Digital India | SakhiPay © 2025
+    </footer>
+
+    <!-- Language Switcher Script -->
+    <script>
+        document.getElementById('language').addEventListener('change', async(e) => {
+            const lang = e.target.value;
+            try {
+                const res = await fetch(`lang/${lang}.json`);
+                const data = await res.json();
+                for (const id in data) {
+                    const el = document.getElementById(id);
+                    if (el) el.innerText = data[id];
+                }
+            } catch (err) {
+                console.error("Language file not found or invalid JSON:", err);
+            }
+        });
+    </script>
+
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SakhiPay</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-purple-100 text-gray-800">

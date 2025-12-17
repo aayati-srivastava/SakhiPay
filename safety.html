@@ -1,0 +1,237 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Help & Safety - SakhiPay</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+
+  <script>
+    // Load map centered at user's current location
+    function loadUserMap() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          const mapIframe = document.getElementById("userMap");
+          const embedURL = `https://maps.google.com/maps?q=${lat},${lng}&z=15&output=embed`;
+          mapIframe.src = embedURL;
+        }, function() {
+          alert("Location permission denied. Showing default location.");
+          document.getElementById("userMap").src = "https://maps.google.com/maps?q=New+Delhi&z=12&output=embed";
+        });
+      } else {
+        alert("Geolocation not supported. Showing default map.");
+        document.getElementById("userMap").src = "https://maps.google.com/maps?q=New+Delhi&z=12&output=embed";
+      }
+    }
+  </script>
+</head>
+
+<body onload="loadUserMap()" class="bg-purple-50 text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="bg-purple-800 text-white px-6 py-4 flex justify-between items-center">
+    <h1 class="text-lg font-bold">💳 SakhiPay</h1>
+    <a href="index.html" class="hover:underline">🏠 Back to Home</a>
+  </nav>
+
+  <!-- Main Section -->
+  <section class="max-w-4xl mx-auto py-12 px-6">
+    <h2 class="text-3xl font-bold text-center text-purple-800 mb-8">🛡️ Help & Safety</h2>
+
+    <!-- Emergency Helplines -->
+    <div class="bg-white p-6 rounded shadow mb-6">
+      <h3 class="text-xl font-semibold mb-2">📞 Emergency Helplines</h3>
+      <ul class="list-disc list-inside text-gray-700 space-y-2">
+        <li>
+          Women Helpline: <strong>1091</strong> — 
+          <a href="tel:1091" class="text-blue-600 underline">Call 1091</a>
+        </li>
+        <li>
+          Cyber Crime Helpline: <strong>1930</strong> — 
+          <a href="tel:1930" class="text-blue-600 underline">Call 1930</a>
+        </li>
+        <li>
+          National Emergency Number: <strong>112</strong> — 
+          <a href="tel:112" class="text-blue-600 underline">Call 112</a>
+        </li>
+        <li>
+          Senior Citizen Helpline: <strong>14567</strong> — 
+          <a href="tel:14567" class="text-blue-600 underline">Call 14567</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Location Sharing -->
+    <div class="bg-white p-6 rounded shadow mb-6">
+      <h3 class="text-xl font-semibold mb-2">🧭 Share Your Live Location</h3>
+      <p class="mb-2">Send your live location to a trusted contact:</p>
+      <div class="space-x-4">
+        <a href="sms:?body=I'm%20in%20trouble.%20Here's%20my%20location:%20https://maps.google.com/?q=your_lat,your_lng" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500">Send SMS</a>
+        <a href="https://wa.me/?text=I%27m%20in%20trouble.%20Here%27s%20my%20location:%20https://maps.google.com/?q=your_lat,your_lng" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-500">Send WhatsApp</a>
+      </div>
+    </div>
+
+    <!-- Nearby Help Centers with Live Map -->
+    <div class="bg-white p-6 rounded shadow mb-6">
+      <h3 class="text-xl font-semibold mb-2">🗺️ Nearby Help Centers</h3>
+      <p class="mb-4">This map shows your current location. Zoom in and explore nearby police stations, hospitals, or help centers.</p>
+      <div class="w-full h-64 rounded overflow-hidden shadow">
+        <iframe
+          id="userMap"
+          class="w-full h-full border-0"
+          loading="lazy"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+
+    <!-- Scam Stories -->
+    <div class="bg-white p-6 rounded shadow mb-6">
+      <h3 class="text-xl font-semibold mb-2">📘 Real-Life Scam Scenarios</h3>
+      <p class="mb-2"><strong>Story 1:</strong> A woman received a fake SMS saying her KYC was expiring. She almost clicked the link but remembered the SakhiTip: “Banks never ask for KYC over SMS.” She ignored it and reported it.</p>
+      <p><strong>Story 2:</strong> A fraudster asked for UPI PIN pretending to be a relative. She didn't share it because she learned from Sakhi that UPI PIN is private.</p>
+    </div>
+
+    <!-- Complaint Filing Guide -->
+    <div class="bg-white p-6 rounded shadow">
+      <h3 class="text-xl font-semibold mb-2">📝 How to File a Complaint (Cybercrime)</h3>
+      <ul class="list-decimal list-inside text-gray-700 space-y-2">
+        <li>Go to <a href="https://www.cybercrime.gov.in/" target="_blank" class="text-blue-600 underline">cybercrime.gov.in</a></li>
+        <li>Select “Report Cyber Crime” and click "Report Other Cyber Crimes"</li>
+        <li>Register/Login using your mobile number</li>
+        <li>Fill in complaint details: incident date, platform (WhatsApp, UPI, SMS), phone number used, etc.</li>
+        <li>Attach any screenshots, bank details (if needed)</li>
+        <li>Submit and save complaint ID for tracking</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-purple-800 text-white text-center py-6 mt-8">
+    Stay Safe, Stay Empowered | SakhiPay © 2025
+  </footer>
+
+</body>
+</html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Help & Safety - SakhiPay</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+
+  <script>
+    // Load map centered at user's current location
+    function loadUserMap() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          const mapIframe = document.getElementById("userMap");
+          const embedURL = `https://maps.google.com/maps?q=${lat},${lng}&z=15&output=embed`;
+          mapIframe.src = embedURL;
+        }, function() {
+          alert("Location permission denied. Showing default location.");
+          document.getElementById("userMap").src = "https://maps.google.com/maps?q=New+Delhi&z=12&output=embed";
+        });
+      } else {
+        alert("Geolocation not supported. Showing default map.");
+        document.getElementById("userMap").src = "https://maps.google.com/maps?q=New+Delhi&z=12&output=embed";
+      }
+    }
+  </script>
+</head>
+
+<body onload="loadUserMap()" class="bg-purple-50 text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="bg-purple-800 text-white px-6 py-4 flex justify-between items-center">
+    <h1 class="text-lg font-bold">💳 SakhiPay</h1>
+    <a href="index.html" class="hover:underline">🏠 Back to Home</a>
+  </nav>
+
+  <!-- Main Section -->
+  <section class="max-w-4xl mx-auto py-12 px-6">
+    <h2 class="text-3xl font-bold text-center text-purple-800 mb-8">🛡️ Help & Safety</h2>
+
+    <!-- Emergency Helplines -->
+    <div class="bg-white p-6 rounded shadow mb-6">
+      <h3 class="text-xl font-semibold mb-2">📞 Emergency Helplines</h3>
+      <ul class="list-disc list-inside text-gray-700 space-y-2">
+        <li>
+          Women Helpline: <strong>1091</strong> — 
+          <a href="tel:1091" class="text-blue-600 underline">Call 1091</a>
+        </li>
+        <li>
+          Cyber Crime Helpline: <strong>1930</strong> — 
+          <a href="tel:1930" class="text-blue-600 underline">Call 1930</a>
+        </li>
+        <li>
+          National Emergency Number: <strong>112</strong> — 
+          <a href="tel:112" class="text-blue-600 underline">Call 112</a>
+        </li>
+        <li>
+          Senior Citizen Helpline: <strong>14567</strong> — 
+          <a href="tel:14567" class="text-blue-600 underline">Call 14567</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Location Sharing -->
+    <div class="bg-white p-6 rounded shadow mb-6">
+      <h3 class="text-xl font-semibold mb-2">🧭 Share Your Live Location</h3>
+      <p class="mb-2">Send your live location to a trusted contact:</p>
+      <div class="space-x-4">
+        <a href="sms:?body=I'm%20in%20trouble.%20Here's%20my%20location:%20https://maps.google.com/?q=your_lat,your_lng" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500">Send SMS</a>
+        <a href="https://wa.me/?text=I%27m%20in%20trouble.%20Here%27s%20my%20location:%20https://maps.google.com/?q=your_lat,your_lng" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-500">Send WhatsApp</a>
+      </div>
+    </div>
+
+    <!-- Nearby Help Centers with Live Map -->
+    <div class="bg-white p-6 rounded shadow mb-6">
+      <h3 class="text-xl font-semibold mb-2">🗺️ Nearby Help Centers</h3>
+      <p class="mb-4">This map shows your current location. Zoom in and explore nearby police stations, hospitals, or help centers.</p>
+      <div class="w-full h-64 rounded overflow-hidden shadow">
+        <iframe
+          id="userMap"
+          class="w-full h-full border-0"
+          loading="lazy"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+
+    <!-- Scam Stories -->
+    <div class="bg-white p-6 rounded shadow mb-6">
+      <h3 class="text-xl font-semibold mb-2">📘 Real-Life Scam Scenarios</h3>
+      <p class="mb-2"><strong>Story 1:</strong> A woman received a fake SMS saying her KYC was expiring. She almost clicked the link but remembered the SakhiTip: “Banks never ask for KYC over SMS.” She ignored it and reported it.</p>
+      <p><strong>Story 2:</strong> A fraudster asked for UPI PIN pretending to be a relative. She didn't share it because she learned from Sakhi that UPI PIN is private.</p>
+    </div>
+
+    <!-- Complaint Filing Guide -->
+    <div class="bg-white p-6 rounded shadow">
+      <h3 class="text-xl font-semibold mb-2">📝 How to File a Complaint (Cybercrime)</h3>
+      <ul class="list-decimal list-inside text-gray-700 space-y-2">
+        <li>Go to <a href="https://www.cybercrime.gov.in/" target="_blank" class="text-blue-600 underline">cybercrime.gov.in</a></li>
+        <li>Select “Report Cyber Crime” and click "Report Other Cyber Crimes"</li>
+        <li>Register/Login using your mobile number</li>
+        <li>Fill in complaint details: incident date, platform (WhatsApp, UPI, SMS), phone number used, etc.</li>
+        <li>Attach any screenshots, bank details (if needed)</li>
+        <li>Submit and save complaint ID for tracking</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-purple-800 text-white text-center py-6 mt-8">
+    Stay Safe, Stay Empowered | SakhiPay © 2025
+  </footer>
+
+</body>
+</html>
+>>>>>>> b0ee74d96f4c6547fa00f8b2f3bf8a6949f6ab7d
